@@ -23,7 +23,7 @@
                   <li v-for="item in links" class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">{{item.text}}</a>
                   </li>
-                  <li v-for="item in links" class="nav-item">
+                  <li v-if="login" v-for="item in links" class="nav-item">
                     <a v-show="!item.enable" class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">{{item.text}}</a>
                 </li>
                 
