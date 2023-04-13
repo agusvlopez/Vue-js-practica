@@ -12,6 +12,26 @@
 </head>
 <body>
   <div id="contenedor">
+    <!-- MODAL -->
+    <div v-if="modalLoginVisible" class="modal" tabindex="-1" style="display: block;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <p class="modal-title">Iniciar sesión</p>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Ingrese su contraseña</p>
+            <input type="password" v-on:keyup.enter="iniciarSesion" >
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="cerrarModalLogin">Cancelar</button>
+            <button type="button" class="btn btn-primary" @click="iniciarSesion">Iniciar sesión</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- NAV -->
     <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
               <a class="navbar-brand" href="#">Navbar</a>
@@ -23,13 +43,18 @@
                   <!-- si item.enable es true me recorre todos los enable=true o si login=true me recorre todo: es uno u otro...-->
                   <li v-if="item.enable || login" v-for="item in links"  class="nav-item"> 
                     <a class="nav-link active" aria-current="page" href="#">{{item.text}}</a>
-                  </li>
-                                 
+                  </li>                
                 </ul>
-                <form class="d-flex" role="search" @submit.prevent="envioInfo" >
-                  <button v-if="!login" class="btn btn-outline-success" type="submit" @click="iniciarSesion">Iniciar Sesión</button>
 
-                  <button v-if="login" class="btn btn-outline-success" type="submit" @click="cerrarSesion">Cerrar sesión</button>
+                <form class="d-flex" role="search" @submit.prevent="envioInfo" >
+
+                  <button 
+                    :class="`btn btn-outline-${!login ? 'success' : 'danger'}`"
+                    @click="toggleLogin"
+                  >
+                    {{login ? 'Cerrar sesión' : 'Iniciar Sesión'}}
+                  </button>
+
                 </form>
               </div>
             </div>

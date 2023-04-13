@@ -1,7 +1,8 @@
 const app = new Vue({
     el: '#contenedor',
     data: {
-        message: "Vamos a probar el uso de eventos en vivo" ,
+        modalLoginVisible: false,
+        message: "Vamos a armar la aplicación en Vue" ,
         login: false,
         links: [
             {text: 'Home', url: '/home', enable: true},
@@ -10,16 +11,34 @@ const app = new Vue({
         ]
     },
     methods: {
-       
-        cerrarSesion() {
-            this.login = false;
+        mostrarModalLogin () {
+            this.modalLoginVisible = true;
         },
+
+        cerrarModalLogin () {
+            this.modalLoginVisible = false;
+        },
+
         iniciarSesion() {
             this.login = true;
+             this.cerrarModalLogin();
+         },
+
+        toggleLogin() {
+            if(!this.login){
+                this.mostrarModalLogin();
+            }
+            this.login = !this.login
+            
         },
+       
 
         envioInfo() {
             console.log("Se ha enviado información")
+        },
+        
+        probandoKeyUp () {
+            alert("apretaste el enter")
         }
     }
 });
