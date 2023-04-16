@@ -64,6 +64,9 @@
       <p>{{message}}</p>
       <p>{{login ? 'Esta logueado con su usuario del sistema' : "¿Aún no tiene cuenta?"}}</p> 
 
+      <button class="btn btn-primary" v-if="login" @click.once="agregarMiPerfil">Agregar 'Mi Perfil'</button>
+      <button class="btn btn-danger" v-if="login" @click.once="sacarMiPerfil">Sacar 'Mi Perfil'</button>
+
       <p v-show="login" style="color: green">Bienvenido!</p>
       <p v-show="!login" style="color:red">Por favor, ¡inicie sesión!</p>
       

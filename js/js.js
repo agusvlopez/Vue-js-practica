@@ -32,13 +32,21 @@ const app = new Vue({
             
         },
        
-
         envioInfo() {
             console.log("Se ha enviado información")
         },
         
         probandoKeyUp () {
             alert("apretaste el enter")
+        },
+
+        agregarMiPerfil () {
+            const miPerfil = {text: 'Mi perfil', url: '/perfil', enable: true};
+            this.links.push(miPerfil);
+            
+        },
+        sacarMiPerfil () {
+            this.links.splice(1,1);
         }
     }
 });
