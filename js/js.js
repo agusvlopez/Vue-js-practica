@@ -1,3 +1,14 @@
+Vue.component('page-content', {
+    template: `
+    <div>
+        <h1>Contenido de la página</h1>
+        <p>Este es el contenido de la página</p>
+    </div>
+    `
+})
+
+
+
 const app = new Vue({
     el: '#contenedor',
     data: {
@@ -5,9 +16,9 @@ const app = new Vue({
         message: "Vamos a armar la aplicación en Vue" ,
         login: false,
         links: [
-            {text: 'Home', url: '/home', enable: true},
-            {text: 'Mi perfil', url: '/perfil', enable: false},
-            {text: 'Configuracion', url: '/config', enable: false},
+            {text: 'Home', url: '/home', enable: true, active: true, id: 1},
+            {text: 'Mi perfil', url: '/perfil', enable: false, active: false, id: 2},
+            {text: 'Configuracion', url: '/config', enable: false, active: false, id: 3},
         ]
     },
     methods: {
@@ -24,7 +35,7 @@ const app = new Vue({
              this.cerrarModalLogin();
          },
 
-        toggleLogin() {
+        toogleLogin() {
             if(!this.login){
                 this.mostrarModalLogin();
             }
@@ -47,6 +58,20 @@ const app = new Vue({
         },
         sacarMiPerfil () {
             this.links.splice(1,1);
+        },
+        
+    
+        clickSeccionNav () {
+           
+            for(this.link of this.links){
+                
+            if(!this.link.active) {
+                this.link.active = this.link.active;
+            }
+
+            this.link.active = !this.link.active
+            }
+            
         }
     }
 });
