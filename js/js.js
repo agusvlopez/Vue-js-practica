@@ -2,10 +2,19 @@ Vue.component('page-content', {
     template: `
     <div>
         <h1>Contenido de la página</h1>
-        <p>Este es el contenido de la página</p>
+        <p>{{message}}</p>
     </div>
     `
-})
+    ,
+    props: ['message'],
+    data: function() {
+        return {
+            message: 'Este es el mensaje desde un componente!',
+        }
+    },
+
+    
+});
 
 
 

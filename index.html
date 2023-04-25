@@ -62,7 +62,10 @@
 
     <main class="container p-1">
       <!-- PREGUNTAR COMO DIRECCIONARME AL VUE COMPONENT CON CTRL(NO PUDE) -->
-      <page-content></page-content>  
+      <page-content 
+      :message="'Este es el 1 mensaje'"
+      ></page-content>  
+     
       <p>{{message}}</p>
       <p>{{login ? 'Esta logueado con su usuario del sistema' : "¿Aún no tiene cuenta?"}}</p> 
 
