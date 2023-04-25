@@ -9,8 +9,6 @@ Vue.component('page-content', {
     props: ['title','message'],
     data: function() {
         return {
-            title: 'Contenido de la página',
-            message: 'Este es el mensaje desde un componente!',
         }
     },
 
@@ -29,6 +27,22 @@ const app = new Vue({
             {text: 'Home', url: '/home', enable: true, active: true, id: 1},
             {text: 'Mi perfil', url: '/perfil', enable: false, active: false, id: 2},
             {text: 'Configuracion', url: '/config', enable: false, active: false, id: 3},
+        ],
+        articles: [
+            {
+                title: 'Perro',
+                message: 'El perro se llama Rocco'
+            },
+
+            {
+                title: 'Gato',
+                message: 'El gato se llama Rocco'
+            },
+
+            {
+                title: 'Pez',
+                message: 'El pez se llama Rocco'
+            }
         ]
     },
     methods: {
