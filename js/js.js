@@ -1,8 +1,8 @@
 Vue.component('page-content', {
     template: `
-    <div>
-        <h1>{{title}}</h1>
-        <p>{{message}}</p>
+    <div class="pageContent">
+        <h1 class="pageContent__title">{{title}}</h1>
+        <p class="pageContent__text">{{message}}</p>
     </div>
     `
     ,
@@ -45,6 +45,14 @@ const app = new Vue({
             }
         ]
     },
+
+    mounted(){
+      const isLogin = localStorage.getItem('login');
+      if(isLogin) {
+        this.login = true;
+      }
+    },
+
     methods: {
         mostrarModalLogin () {
             this.modalLoginVisible = true;
@@ -62,8 +70,10 @@ const app = new Vue({
         toogleLogin() {
             if(!this.login){
                 this.mostrarModalLogin();
+            }else {
+                this.login = false;
             }
-            this.login = !this.login
+            
             
         },
        
