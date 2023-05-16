@@ -1,22 +1,3 @@
-Vue.component('page-content', {
-    template: `
-    <div class="pageContent">
-        <h1 class="pageContent__title">{{title}}</h1>
-        <p class="pageContent__text">{{message}}</p>
-    </div>
-    `
-    ,
-    props: ['title','message'],
-    data: function() {
-        return {
-        }
-    },
-
-    
-});
-
-
-
 const app = new Vue({
     el: '#contenedor',
     data: {
@@ -48,6 +29,10 @@ const app = new Vue({
 
     mounted(){
       const isLogin = JSON.parse(localStorage.getItem('login'));
+      const message = localStorage.getItem('message');
+      if(message) {
+        this.message =  message;
+      }
       if(isLogin) {
         this.login = true;
       }
@@ -66,7 +51,10 @@ const app = new Vue({
             this.login = true;
             localStorage.setItem('login','true');
             this.cerrarModalLogin();
-         },
+         
+        //cada vez que inicie sesion...
+        localStorage.setItem('message', "Estoy cambiando el mensaje");
+        },
 
         toogleLogin() {
             if(!this.login){ // si no esta logueado
