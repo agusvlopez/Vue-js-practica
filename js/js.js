@@ -39,6 +39,11 @@ const app = new Vue({
     },
 
     methods: {
+        authenticated (status) {
+            if(status){
+            console.log("Autenticacion: se pudo loguear correctamente");
+        }
+        },
         mostrarModalLogin () {
             this.modalLoginVisible = true;
         },

@@ -17,7 +17,9 @@
 <body>
   <div id="contenedor">
     <!-- MODAL -->
-   <login-modal :modal-login-visible = "modalLoginVisible"
+   <login-modal
+                @authenticated = "authenticated" 
+                :modal-login-visible = "modalLoginVisible"
                 :cerrar-modal-login = "cerrarModalLogin"
                 :iniciar-sesion = "iniciarSesion"
                 ></login-modal>
