@@ -11,9 +11,24 @@ Vue.component('login-modal', {
             <p>Ingrese su contraseña</p>
             <input type="password" v-on:keyup.enter="loginOnServer" >
           </div>
+          <div class="ps-3 pt-1 pb-2">
+          <p>Para poder continuar debe aceptar las politicas de privacidad y los términos y condiciones</p>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="policies" id="flexCheckDefault" v-model="legals">
+            <label class="form-check-label" for="flexCheckDefault">
+            Politicas de privacidad
+           </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="terms" id="flexCheckChecked" v-model="legals">
+            <label class="form-check-label" for="flexCheckChecked">
+            Términos y condiciones
+            </label>
+          </div>
+          </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="cerrarModalLogin">Cancelar</button>
-            <button type="button" class="btn btn-primary" @click="loginOnServer">Iniciar sesión</button>
+            <button type="button" class="btn btn-primary" @click="loginOnServer" :disabled="loginIsDisabled">Iniciar sesión</button>
           </div>
         </div>
       </div>
@@ -21,11 +36,24 @@ Vue.component('login-modal', {
     `,
 
     props: ['modalLoginVisible', 'cerrarModalLogin', 'iniciarSesion'],
+
+  //computed... se comporta como una funcion pero es una variable, tiene la forma de un método pero cuando lo uso lo implemento como si fuera una variable
+    computed: {
+      loginIsDisabled: function(){
+        return this.legals.length !== 2
+      }
+    },
+
+    data: function(){
+      return {
+        legals: [],
+      }
+    },
     
     methods: {
       loginOnServer: function(){
 
-        new Promise((success, error) => {
+          new Promise((success, error) => {
 
           setTimeout(() => {
             success();
@@ -48,10 +76,6 @@ Vue.component('login-modal', {
       }
     },
     
-    data: function(){
-        return {
 
-        }
-    }
 })
 
