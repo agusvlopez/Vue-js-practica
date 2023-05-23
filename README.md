@@ -1,2 +1,2 @@
-# Vue js parte 2
+# Practicando Vue js
  
