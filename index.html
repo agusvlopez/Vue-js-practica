@@ -53,9 +53,18 @@
     </nav>
 
     <main class="container p-1">
-      <!-- PREGUNTAR COMO DIRECCIONARME AL VUE COMPONENT CON CTRL(NO PUDE) -->
+
+      <select class="form-select mt-2" aria-label="Default select example" v-if="login">
+        <option selected>Todos los articulos</option>
+        <option    
+        v-for="item in articles"
+        v-bind:value="item.id" 
+        :key="item.id" 
+        >{{item.title}}</option>
+      </select>
+
       <page-content
-        v-for="article in articles" 
+        v-for="article in articles"
         :title="article.title"
         :message="article.message"
       ></page-content>

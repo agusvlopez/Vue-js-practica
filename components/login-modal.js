@@ -7,9 +7,11 @@ Vue.component('login-modal', {
             <p class="modal-title">Iniciar sesión</p>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
+
+          <form @submit.prevent="loginOnServer">
           <div class="modal-body">
             <p>Ingrese su contraseña</p>
-            <input type="password" v-on:keyup.enter="loginOnServer" >
+            <input type="password">
           </div>
           <div class="ps-3 pt-1 pb-2">
           <p>Para poder continuar debe aceptar las politicas de privacidad y los términos y condiciones</p>
@@ -27,9 +29,11 @@ Vue.component('login-modal', {
           </div>
           </div>
           <div class="modal-footer">
+          <input type="submit" value="Iniciar sesión" class="btn btn-primary" :disabled="loginIsDisabled">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="cerrarModalLogin">Cancelar</button>
-            <button type="button" class="btn btn-primary" @click="loginOnServer" :disabled="loginIsDisabled">Iniciar sesión</button>
           </div>
+          </form>
+
         </div>
       </div>
     </div>
@@ -52,7 +56,7 @@ Vue.component('login-modal', {
     
     methods: {
       loginOnServer: function(){
-
+         
           new Promise((success, error) => {
 
           setTimeout(() => {

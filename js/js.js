@@ -11,18 +11,31 @@ const app = new Vue({
         ],
         articles: [
             {
+                id: 0,
                 title: 'Perro',
-                message: 'El perro se llama Rocco'
+                message: 'El perro se llama Rocco',
+                enable: false
             },
 
             {
+                id: 1,
                 title: 'Gato',
-                message: 'El gato se llama Rocco'
+                message: 'El gato se llama Rocco',
+                enable: false
             },
 
             {
+                id: 2,
                 title: 'Pez',
-                message: 'El pez se llama Rocco'
+                message: 'El pez se llama Rocco',
+                enable: false
+            },
+
+            {
+                id: 3,
+                title: 'Pájaro',
+                message: 'El pájaro se llama Rocco',
+                enable: false
             }
         ]
     },

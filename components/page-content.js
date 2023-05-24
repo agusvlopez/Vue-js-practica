@@ -11,7 +11,6 @@ Vue.component('page-content', {
         return {
         }
     },
-
     
 });
 
