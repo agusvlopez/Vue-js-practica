@@ -1,3 +1,5 @@
+const PASSWORD = "1234";
+
 Vue.component('login-modal', {
     template: `
     <div v-if="modalLoginVisible" class="modal" tabindex="-1" style="display: block;">
@@ -11,9 +13,10 @@ Vue.component('login-modal', {
           <form @submit.prevent="loginOnServer">
           <div class="modal-body">
             <p>Ingrese su contraseña</p>
-            <input type="password">
+            <input type="password" v-model="password">
           </div>
-          <div class="ps-3 pt-1 pb-2">
+
+          <div class="pt-1 pb-2 ps-3 pe-3">
           <p>Para poder continuar debe aceptar las politicas de privacidad y los términos y condiciones</p>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="policies" id="flexCheckDefault" v-model="legals">
@@ -28,6 +31,14 @@ Vue.component('login-modal', {
             </label>
           </div>
           </div>
+
+          <div class="modal-errors mt-3">
+            <div v-for="error in errors" class="alert alert-danger rounded-0" role="alert">
+            {{error}}
+            </div>
+          </div>
+
+         
           <div class="modal-footer">
           <input type="submit" value="Iniciar sesión" class="btn btn-primary" :disabled="loginIsDisabled">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="cerrarModalLogin">Cancelar</button>
@@ -50,18 +61,26 @@ Vue.component('login-modal', {
 
     data: function(){
       return {
+        errors: [],
         legals: [],
+        password: ""
       }
     },
+
     
     methods: {
       loginOnServer: function(){
-         
+        this.errors = [];
+         //verificamos que el password sea correcto
+         if(this.password !== PASSWORD){
+          this.errors.push("La contraseña es incorrecta");
+          return;
+         }
           new Promise((success, error) => {
 
           setTimeout(() => {
             success();
-          },2000);
+          },1000);
         })
 
           .then(() => {
