@@ -1,11 +1,42 @@
+//instancia de router
+const home = {
+    template:
+    `<div class="container">
+        <h1>Home</h1>
+    </div>`
+};
+
+const perfil = {
+    template:
+    `<div class="container">
+        <h1>Perfil</h1>
+    </div>`
+};
+
+const config = {
+    template:
+    `<div class="container">
+        <h1>Configuracion</h1>
+    </div>`
+};
+
+const router = new VueRouter({
+    routes: [
+        {path: '/', component: home},
+        {path: '/perfil', component: perfil},
+        {path: '/config', component: config}
+    ]
+});
+
 const app = new Vue({
     el: '#contenedor',
+    router,
     data: {
         modalLoginVisible: false,
         message: "Vamos a armar la aplicación en Vue" ,
         login: false,
         links: [
-            {text: 'Home', url: '/home', enable: true, active: true, id: 1},
+            {text: 'Home', url: '/', enable: true, active: true, id: 1},
             {text: 'Mi perfil', url: '/perfil', enable: false, active: false, id: 2},
             {text: 'Configuracion', url: '/config', enable: false, active: false, id: 3},
         ],
