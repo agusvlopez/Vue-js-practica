@@ -135,18 +135,6 @@ const app = new Vue({
             this.links.splice(1,1);
         },
         
-    
-        clickSeccionNav () {
-           
-            for(this.link of this.links){
-                
-            if(!this.link.active) {
-                this.link.active = this.link.active;
-            }
 
-            this.link.active = !this.link.active
-            }
-            
-        }
     }
 });

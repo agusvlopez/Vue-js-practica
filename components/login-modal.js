@@ -2,7 +2,7 @@ const PASSWORD = "1234";
 
 Vue.component('login-modal', {
     template: `
-    <div v-if="modalLoginVisible" class="modal" tabindex="-1" style="display: block;">
+    <div v-show="modalLoginVisible" class="modal" tabindex="-1" style="display: block;">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
