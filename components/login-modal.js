@@ -7,7 +7,7 @@ Vue.component('login-modal', {
         <div class="modal-content">
           <div class="modal-header">
             <p class="modal-title">Iniciar sesión</p>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="cerrarModalLogin"></button>
           </div>
 
           <form @submit.prevent="loginOnServer">
